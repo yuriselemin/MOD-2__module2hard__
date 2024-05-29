@@ -4,6 +4,27 @@ import random
 
 
 
+# это вариант вывода всех паролей всего диапазона вводимых чисел
+# выводим списком
+
+def find_pairs_for_number(target_number):
+    pairs = []
+    for i in range(1, target_number + 1):
+        for j in range(i, target_number + 1):
+            if (i != j) and ((i + j) % target_number == 0):  # исправленно здесь! я добавил сравнение что бы оставить
+                                                             # только уникальные пары
+                                                             # и что бы была кратность на target_number
+                pairs.append(f'{i}{j}')
+    return pairs
+
+for number in range(3, 21):                    # Перебираем числа от 3 до 20 включительно
+    numbers = find_pairs_for_number(number)    # Присваиваем результат функции
+    result = "".join(map(str, numbers))
+    print(f'{number}-{result}')
+
+
+
+
 
 
 
@@ -24,32 +45,6 @@ import random
 # numbers = find_pairs_for_number(random_number)  # присваиваем результат функции
 # result = "".join(map(str, numbers))
 # print(f'{random_number}-{result}')
-
-
-
-
-
-
-
-# это вариант вывода всех паролей всего диапазона вводимых чисел
-# выводим списком
-
-def find_pairs_for_number(target_number):
-    pairs = []
-    for i in range(1, target_number + 1):
-        for j in range(i, target_number + 1):
-            if (i != j) and ((i + j) % target_number == 0):  # исправленно здесь! я добавил сравнение что бы оставить
-                                                             # только уникальные пары
-                                                             # и что бы была кратность на target_number
-                pairs.append(f'{i}{j}')
-    return pairs
-
-for number in range(3, 21):                    # Перебираем числа от 3 до 20 включительно
-    numbers = find_pairs_for_number(number)    # Присваиваем результат функции
-    result = "".join(map(str, numbers))
-    print(f'{number}-{result}')
-
-
 
 
 
